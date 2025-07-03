@@ -18,6 +18,92 @@ import { useNavigate } from "react-router-dom";
 import { Loader2 } from "lucide-react";
 import { SCHEMES_API_END_POINT } from "@/utils/constants";
 
+const locations = [
+  "Pan-India",
+  "Andhra Pradesh",
+  "Arunachal Pradesh",
+  "Assam",
+  "Bihar",
+  "Chhattisgarh",
+  "Goa",
+  "Gujarat",
+  "Haryana",
+  "Himachal Pradesh",
+  "Jharkhand",
+  "Karnataka",
+  "Kerala",
+  "Madhya Pradesh",
+  "Maharashtra",
+  "Manipur",
+  "Meghalaya",
+  "Mizoram",
+  "Nagaland",
+  "Odisha",
+  "Punjab",
+  "Rajasthan",
+  "Sikkim",
+  "Tamil Nadu",
+  "Telangana",
+  "Tripura",
+  "Uttar Pradesh",
+  "Uttarakhand",
+  "West Bengal",
+  "Andaman and Nicobar Islands",
+  "Chandigarh",
+  "Dadra and Nagar Haveli and Daman and Diu",
+  "Delhi",
+  "Jammu and Kashmir",
+  "Ladakh",
+  "Lakshadweep",
+  "Puducherry",
+];
+
+const categories = [
+  "Education & Learning",
+  "Business & Entrepreneurship",
+  "Banking & Insurance",
+  "Health & Wellness",
+  "Housing & Shelter",
+  "Public Safety, Law & Justice",
+  "Science, IT & Communications",
+  "Environment & Rural",
+  "Skills & Employment",
+  "Social Welfare & Empowerment",
+  "Sports & Culture",
+  "Transport & Infrastructure",
+  "Travel & Tourism",
+  "Utility & Sanitation",
+  "Women and Child",
+];
+
+const subCategories = [
+  "Women",
+  "Children",
+  "Youth",
+  "Senior Citizens",
+  "Persons with Disabilities",
+  "Farmers",
+  "Students",
+  "Entrepreneurs",
+  "Scheduled Castes",
+  "Scheduled Tribes",
+  "Other Backward Classes",
+  "Minorities",
+  "Transgender Persons",
+  "Below Poverty Line (BPL) Families",
+  "Urban Poor",
+  "Rural Households",
+  "Small and Marginal Farmers",
+  "Artisans",
+  "Self-Help Groups",
+  "Widows",
+  "Orphans",
+  "Unemployed Individuals",
+  "Startups",
+  "Micro, Small and Medium Enterprises (MSMEs)",
+];
+
+
 const PostScheme = () => {
     const [input, setInput] = useState({
       title: "",
@@ -79,7 +165,7 @@ const PostScheme = () => {
       <Navbar />
       <div className="flex items-center justify-center w-screen my-5">
         <form
-            onSubmit={submitHandler}
+          onSubmit={submitHandler}
           className="p-8 max-w-4xl border border-gray-200 shadow-lg rounded-md"
         >
           <div className="grid grid-cols-2 gap-2">
@@ -145,13 +231,19 @@ const PostScheme = () => {
             </div>
             <div>
               <Label>Location</Label>
-              <Input
-                type="text"
+              <select
                 name="location"
                 value={input.location}
                 onChange={changeEventHandler}
-                className="focus-visible:ring-offset-0 focus-visible:ring-0 my-1"
-              />
+                className="focus-visible:ring-offset-0 focus-visible:ring-0 my-1 w-full border border-input bg-transparent px-3 py-2 text-sm shadow-sm rounded-md"
+              >
+                <option value="">Select Location</option>
+                {locations.map((loc) => (
+                  <option key={loc} value={loc}>
+                    {loc}
+                  </option>
+                ))}
+              </select>
             </div>
             <div>
               <Label>Type</Label>
@@ -169,26 +261,38 @@ const PostScheme = () => {
             </div>
             <div>
               <Label>Category</Label>
-              <Input
-                type="text"
+              <select
                 name="category"
                 value={input.category}
                 onChange={changeEventHandler}
-                className="focus-visible:ring-offset-0 focus-visible:ring-0 my-1"
-              />
+                className="focus-visible:ring-offset-0 focus-visible:ring-0 my-1 w-full border border-input bg-transparent px-3 py-2 text-sm shadow-sm rounded-md"
+              >
+                <option value="">Select Category</option>
+                {categories.map((cat) => (
+                  <option key={cat} value={cat}>
+                    {cat}
+                  </option>
+                ))}
+              </select>
             </div>
             <div>
               <Label>Sub Category</Label>
-              <Input
-                type="text"
+              <select
                 name="subCategory"
                 value={input.subCategory}
                 onChange={changeEventHandler}
-                className="focus-visible:ring-offset-0 focus-visible:ring-0 my-1"
-              />
+                className="focus-visible:ring-offset-0 focus-visible:ring-0 my-1 w-full border border-input bg-transparent px-3 py-2 text-sm shadow-sm rounded-md"
+              >
+                <option value="">Select SubCategory</option>
+                {subCategories.map((subcat) => (
+                  <option key={subcat} value={subcat}>
+                    {subcat}
+                  </option>
+                ))}
+              </select>
             </div>
             <div>
-              <Label>Apply Link(for govt schemes)</Label>
+              <Label>Apply Link(applicable for govt schemes)</Label>
               <Input
                 type="text"
                 name="applyLink"

@@ -76,6 +76,14 @@ export const getAllSchemes = async (req,res) => {
             { title: { $regex: keyword, $options: "i" } },
             { description: { $regex: keyword, $options: "i" } },
             { category: { $regex: keyword, $options: "i" } },
+
+            ...(details
+              ? [{ details: { $regex: keyword, $options: "i" } }]
+              : []),
+
+            ...(subCategory
+              ? [{ subCategory: { $regex: keyword, $options: "i" } }]
+              : []),
           ],
         };
 

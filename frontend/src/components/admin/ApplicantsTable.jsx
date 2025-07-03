@@ -9,16 +9,30 @@ import {
   TableRow,
 } from "../ui/table";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
-import { MoreHorizontal } from "lucide-react";
+import { Check, MoreHorizontal, X } from "lucide-react";
  import { useSelector } from "react-redux";
-// import { toast } from "sonner";
-// import { APPLICATION_API_END_POINT } from "@/utils/constants";
-// import axios from "axios";
+import { APPLICATION_API_END_POINT } from "@/utils/constants";
+import { toast } from "sonner";
+import axios from "axios";
 
 const shortlistingStatus = ["Accepted", "Rejected"]
 const ApplicantsTable = () => {
 
     const { applicants } = useSelector((store) => store.application);
+
+    const statusHandler = async (status, applicationId)=>{
+      try {
+        const res =  await axios.post(`${APPLICATION_API_END_POINT}/status/${applicationId}/update`, {status}, {withCredentials:true})
+
+        if(res.data.success){
+          toast.success(res.data.message)
+        }
+      } 
+      catch (error) {
+        console.log(error)
+        toast.error(error.response.data.message)
+      }
+    }
   return (
     <div>
       <Table>
@@ -98,9 +112,28 @@ const ApplicantsTable = () => {
                           <div
                             onClick={() => statusHandler(status, item?._id)}
                             key={index}
-                            className="flex w-fit items-center my-2 cursor-pointer"
+                            className={`flex w-fit items-center my-2 cursor-pointer px-2 py-1 rounded 
+                              ${
+                                status === "Accepted"
+                                  ? "bg-green-300"
+                                  : status === "Rejected"
+                                  ? "bg-red-300"
+                                  : "bg-gray-200"
+                              }`}
                           >
-                            <span>{status}</span>
+                            {status === "Accepted" && (
+                              <>
+                                <Check className="w-4 h-4 text-green-700" />
+                                <span>Accept</span>
+                              </>
+                            )}
+
+                            {status === "Rejected" && (
+                              <>
+                                <X className="w-4 h-4 text-red-700" />
+                                <span>Reject</span>
+                              </>
+                            )}
                           </div>
                         );
                       })}
