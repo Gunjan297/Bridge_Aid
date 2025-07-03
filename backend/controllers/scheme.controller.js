@@ -76,14 +76,8 @@ export const getAllSchemes = async (req,res) => {
             { title: { $regex: keyword, $options: "i" } },
             { description: { $regex: keyword, $options: "i" } },
             { category: { $regex: keyword, $options: "i" } },
-
-            ...(details
-              ? [{ details: { $regex: keyword, $options: "i" } }]
-              : []),
-
-            ...(subCategory
-              ? [{ subCategory: { $regex: keyword, $options: "i" } }]
-              : []),
+            { details: { $regex: keyword, $options: "i" } },
+            { subCategory: { $regex: keyword, $options: "i" } },
           ],
         };
 
@@ -91,12 +85,12 @@ export const getAllSchemes = async (req,res) => {
           path:"organization"
         }).sort({createdAt: -1});
 
-        if(!schemes || schemes.length ===0){
-            return res.status(404).json({
-              message: "Jobs not found.",
-              success: false,
-            });
-        }
+        // if(!schemes || schemes.length ===0){
+        //     return res.status(404).json({
+        //       message: "Jobs not found.",
+        //       success: false,
+        //     });
+        // }
         
         return res.status(200).json({
           schemes,
@@ -104,7 +98,11 @@ export const getAllSchemes = async (req,res) => {
         });
     } 
     catch (error) {
-        console.log(error)
+        console.log(error);
+        res.status(500).json({
+          message: "Internal server error",
+          success: false,
+        });
     }
 }
 
