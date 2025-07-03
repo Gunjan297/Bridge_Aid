@@ -90,6 +90,10 @@ export const getAppliedSchemes = async (req,res) => {
     } 
     catch (error) {
         console.log(error)
+        return res.status(400).json({
+          message: "Error ocurred while fetching applied schemes",
+          success: false,
+        });
     }
 }
 
