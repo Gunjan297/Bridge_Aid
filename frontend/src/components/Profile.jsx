@@ -8,8 +8,13 @@ import { Label } from "./ui/label";
 import AppliedSchemeTable from "./AppliedSchemeTable";
 import UpdateProfileDialog from "./UpdateProfileDialog";
 import { useSelector } from "react-redux";
+import useGetAppliedSchemes from "@/hooks/useGetAppliedSchemes";
 
 function Profile() {
+
+    //calling custom hook to get all the applications of current user
+    useGetAppliedSchemes ();
+
     const [open,setOpen] = useState(false)
     const {user} = useSelector(store => store.auth)
 
@@ -133,7 +138,7 @@ function Profile() {
 
       {/* Applied Schemes */}
       <div className="max-w-4xl mx-auto bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
-        <h1 className="font-bold text-lg text-gray-800 mb-4">
+        <h1 className="font-bold text-lg text-gray-800 mb-4 text-center">
           Applied Schemes
         </h1>
         {/* Applied Scheme Table */}

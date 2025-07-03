@@ -7,6 +7,9 @@ import {
   CarouselPrevious,
 } from "./ui/carousel";
 import { Button } from "./ui/button";
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { setSearchedQuery } from '@/redux/schemeSlice';
 
 const category = [
   "Education & Learning",
@@ -28,6 +31,14 @@ const category = [
   
 
 function CategorCaraousel() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate()
+
+  const searchSchemeHandler = (query) => {
+      dispatch(setSearchedQuery(query));
+      navigate("/browse")
+    }
+
   return (
     <div>
       <Carousel className="w-full max-w-6xl mx-auto my-20 px-4">
@@ -39,6 +50,7 @@ function CategorCaraousel() {
             >
               <Button
                 variant="outline"
+                onClick = {()=> searchSchemeHandler(cat)}
                 className="rounded-full px-6 py-3 text-sm md:text-base font-medium text-gray-700 hover:bg-green-100 hover:text-green-700 transition-all"
               >
                 {cat}

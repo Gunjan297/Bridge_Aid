@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "./ui/button";
 import { Search } from "lucide-react";
 import CategorCaraousel from "./CategorCaraousel";
+import { useDispatch } from "react-redux";
+import { setSearchedQuery } from "@/redux/schemeSlice";
+import { useNavigate } from "react-router-dom";
 
 const HeroSection = () => {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const [query,setQuery] = useState("")
+
+  const searchSchemeHandler = () => {
+    dispatch(setSearchedQuery(query));
+    navigate("/browse")
+  }
   return (
     <div>
       <section
@@ -31,9 +42,13 @@ const HeroSection = () => {
               <input
                 type="text"
                 placeholder="Find schemes tailored to your needs"
+                onChange={(e) => setQuery(e.target.value)}
                 className="flex-grow outline-none border-none text-gray-700 text-base bg-transparent placeholder-gray-500"
               />
-              <Button className="rounded-full bg-green-600 hover:bg-green-700">
+              <Button
+                onClick={searchSchemeHandler}
+                className="rounded-full bg-green-600 hover:bg-green-700"
+              >
                 <Search className="h-5 w-5 text-white" />
               </Button>
             </div>

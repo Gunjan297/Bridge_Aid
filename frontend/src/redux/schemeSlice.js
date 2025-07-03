@@ -7,8 +7,8 @@ const schemeSlice = createSlice({
     allAdminSchemes: [],
     singleScheme: null,
     searchSchemeByText: "",
-    // allAppliedJobs: [],
-    // searchedQuery: "",
+    allAppliedSchemes: [],
+    searchedQuery: "",
   },
   reducers: {
     // actions
@@ -24,12 +24,12 @@ const schemeSlice = createSlice({
     setSearchSchemeByText: (state, action) => {
       state.searchSchemeByText = action.payload;
     },
-    // setAllAppliedJobs: (state, action) => {
-    //   state.allAppliedJobs = action.payload;
-    // },
-    // setSearchedQuery: (state, action) => {
-    //   state.searchedQuery = action.payload;
-    // },
+    setAllAppliedSchemes: (state, action) => {
+      state.allAppliedSchemes = action.payload;
+    },
+    setSearchedQuery: (state, action) => {
+      state.searchedQuery = action.payload;
+    },
   },
 });
 export const {
@@ -37,7 +37,8 @@ export const {
   setSingleScheme,
   setAllAdminSchemes,
   setSearchSchemeByText,
-  //   setAllAppliedJobs,
-  //   setSearchedQuery,
+  setAllAppliedSchemes,
+  setSearchedQuery,
 } = schemeSlice.actions;
+
 export default schemeSlice.reducer;

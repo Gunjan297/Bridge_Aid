@@ -115,9 +115,9 @@ const ApplicantsTable = () => {
                             className={`flex w-fit items-center my-2 cursor-pointer px-2 py-1 rounded 
                               ${
                                 status === "Accepted"
-                                  ? "bg-green-300"
+                                  ? "bg-green-300 hover:bg-green-400"
                                   : status === "Rejected"
-                                  ? "bg-red-300"
+                                  ? "bg-red-300 hover:bg-red-400"
                                   : "bg-gray-200"
                               }`}
                           >

@@ -21,13 +21,13 @@ function LatestSchemeCard({scheme}) {
         </p>
       </div>
       <div className="flex flex-wrap items-center gap-2 mt-4">
-        <Badge className="text-blue-700 font-semibold px-3 py-1 rounded-full bg-blue-50">
+        <Badge className="text-green-800 font-semibold px-3 py-1 rounded-full bg-green-100">
           {scheme?.type}
         </Badge>
-        <Badge className="text-[#F83002] font-semibold px-3 py-1 rounded-full bg-red-50">
+        <Badge className="text-yellow-800 font-semibold px-3 py-1 rounded-full bg-yellow-100">
           {scheme?.category}
         </Badge>
-        <Badge className="text-[#7209b7] font-semibold px-3 py-1 rounded-full bg-purple-50">
+        <Badge className="text-pink-600 font-semibold px-3 py-1 rounded-full bg-pink-100">
           {scheme?.subCategory}
         </Badge>
       </div>

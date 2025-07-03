@@ -38,13 +38,22 @@ const SchemeCard = ({ scheme }) => {
         <p className="text-sm text-gray-600">{scheme?.description}</p>
       </div>
       <div className="flex items-center gap-2 mt-4">
-        <Badge className={"text-blue-700 font-bold"} variant="ghost">
+        <Badge
+          className={"text-green-800 font-bold bg-green-100"}
+          variant="ghost"
+        >
           {scheme?.type}
         </Badge>
-        <Badge className={"text-[#F83002] font-bold"} variant="ghost">
+        <Badge
+          className={"text-yellow-800 font-bold bg-yellow-100"}
+          variant="ghost"
+        >
           {scheme?.category}
         </Badge>
-        <Badge className={"text-[#7209b7] font-bold"} variant="ghost">
+        <Badge
+          className={"text-pink-600  font-bold bg-pink-100"}
+          variant="ghost"
+        >
           {scheme?.subCategory}
         </Badge>
       </div>

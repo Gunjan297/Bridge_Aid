@@ -1,9 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Navbar from './shared/Navbar'
 import SchemeCard from './SchemeCard';
+import { useDispatch, useSelector } from 'react-redux';
+import { setSearchedQuery } from '@/redux/schemeSlice';
+import useGetAllSchemes from '@/hooks/useGetAllSchemes';
 
 function Browse() {
-    const allSchemes =[1,2,3,4,5,6]
+    useGetAllSchemes();
+    const {allSchemes} = useSelector((store) => store.scheme);
+    const dispatch = useDispatch();
+
+    useEffect (()=>{
+      return ()=>{
+        dispatch(setSearchedQuery(""))
+      }
+    },[])
   return (
     <div>
       <Navbar />
@@ -13,7 +24,7 @@ function Browse() {
         </h1>
         <div className="grid grid-cols-3 gap-4">
           {allSchemes.map((scheme) => {
-            return <SchemeCard />;
+            return <SchemeCard key={scheme._id} scheme={scheme} />;
           })}
         </div>
       </div>
