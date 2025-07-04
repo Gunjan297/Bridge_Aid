@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
 import { Label } from "./ui/label";
+import { Checkbox } from './ui/checkbox';
 
 const fitlerData = [
   {
@@ -98,27 +99,31 @@ const fitlerData = [
     ],
   },
 ];
+
 function FilterCard() {
+
+  const [selected, setSelected] = useState({});
+
   return (
     <div className="w-full bg-white p-3 rounded-md">
       <h1 className="font-bold text-lg">Filter Schemes</h1>
       <hr className="mt-3" />
-      <RadioGroup >
-        {fitlerData.map((data, index) => (
-          <div>
-            <h1 className="font-bold text-lg">{data.fitlerType}</h1>
-            {data.array.map((item, idx) => {
-              const itemId = `id${index}-${idx}`;
-              return (
-                <div className="flex items-center space-x-2 my-2">
-                  <RadioGroupItem value={item} id={itemId} />
-                  <Label htmlFor={itemId}>{item}</Label>
-                </div>
-              );
-            })}
-          </div>
-        ))}
-      </RadioGroup>
+
+      {/* Remove this wrapper or move it inside if needed per group */}
+      {fitlerData.map((data, index) => (
+        <div key={index}>
+          <h1 className="font-bold text-lg mt-4">{data.fitlerType}</h1>
+          {data.array.map((item, idx) => {
+            const itemId = `id${index}-${idx}`;
+            return (
+              <div key={itemId} className="flex items-center space-x-2 my-2">
+                <Checkbox id={itemId} />
+                <Label htmlFor={itemId}>{item}</Label>
+              </div>
+            );
+          })}
+        </div>
+      ))}
     </div>
   );
 }

@@ -10,6 +10,9 @@ function Browse() {
     const {allSchemes} = useSelector((store) => store.scheme);
     const dispatch = useDispatch();
 
+// When the Browse page goes away, clear the search.This effect:
+// This useEffect Does nothing when the component mounts.
+// But when the component unmounts, it sets the query back to empty ("").
     useEffect (()=>{
       return ()=>{
         dispatch(setSearchedQuery(""))
