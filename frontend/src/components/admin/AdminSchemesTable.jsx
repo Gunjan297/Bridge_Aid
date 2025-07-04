@@ -53,7 +53,7 @@ const AdminSchemesTable = () => {
         </TableHeader>
         <TableBody>
           {filterSchemes?.map((scheme) => (
-            <tr>
+            <TableRow key={scheme._id}>
               <TableCell>{scheme?.organization?.name}</TableCell>
               <TableCell>{scheme?.title}</TableCell>
               <TableCell>{scheme?.createdAt.split("T")[0]}</TableCell>
@@ -64,11 +64,7 @@ const AdminSchemesTable = () => {
                   </PopoverTrigger>
                   <PopoverContent className="w-32">
                     <div
-                      onClick={() =>
-                        navigate(
-                          `/admin/organizations/${scheme?.organization_id}`
-                        )
-                      }
+                      onClick={() => navigate(`/admin/scheme/${scheme._id}`)}
                       className="flex items-center gap-2 w-fit cursor-pointer"
                     >
                       <Edit2 className="w-4" />
@@ -86,7 +82,7 @@ const AdminSchemesTable = () => {
                   </PopoverContent>
                 </Popover>
               </TableCell>
-            </tr>
+            </TableRow>
           ))}
         </TableBody>
       </Table>

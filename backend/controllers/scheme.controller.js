@@ -178,4 +178,66 @@ export const getAdminSchemes = async (req,res) => {
   }
 }
 
+export const updateScheme = async (req,res) => {
+    try {
+      // console.log(req.body);
+        const {
+          title,
+          description,
+          details,
+          eligibility,
+          applicationProcess,
+          documentsRequired,
+          location,
+          type,
+          category,
+          subCategory,
+          applyLink,
+        } = req.body;
+        
+        if(!title || !description || !location || !category){
+          return res.status(400).json({
+            message: "Provide necessary information",
+            success: false,
+          });
+        }
+          
+        const updateData = {
+          title,
+          description,
+          details,
+          eligibility,
+          applicationProcess,
+          documentsRequired,
+          location,
+          type,
+          category,
+          subCategory,
+          applyLink,
+        };
+        
+        const scheme = await Scheme.findByIdAndUpdate(req.params.id, updateData, {new:true})
+
+        if (!scheme) {
+          return res.status(404).json({
+            message: "Scheme not found",
+            success: false,
+          });
+        }
+
+        return res.status(200).json({
+          message: "Scheme info updated",
+          scheme,
+          success: true,
+        }); 
+    } 
+    catch (error) {
+       console.log(error);
+       return res.status(500).json({
+         message: "An error occurred while updating the scheme",
+         success: false,
+       });
+    }
+}
+
 

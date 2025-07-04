@@ -15,6 +15,7 @@ import AdminSchemes from "./components/admin/AdminSchemes";
 import PostScheme from './components/admin/PostScheme';
 import Applicants from './components/admin/Applicants';
 import ProtectedRoute from './components/admin/ProtectedRoute';
+import SchemeUpdate from './components/admin/SchemeUpdate';
 
 const appRouter = createBrowserRouter([
   {
@@ -95,6 +96,15 @@ const appRouter = createBrowserRouter([
       </ProtectedRoute>
     ),
   },
+  {
+    path: "/admin/scheme/:id",
+    element: (
+      <ProtectedRoute>
+        <SchemeUpdate />
+      </ProtectedRoute>
+    ),
+  },
+  
 ]);
 
 function App() {

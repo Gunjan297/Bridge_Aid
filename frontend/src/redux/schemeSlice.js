@@ -9,6 +9,7 @@ const schemeSlice = createSlice({
     searchSchemeByText: "",
     allAppliedSchemes: [],
     searchedQuery: [],
+    schemeById: null,
   },
   reducers: {
     // actions
@@ -30,6 +31,9 @@ const schemeSlice = createSlice({
     setSearchedQuery: (state, action) => {
       state.searchedQuery = action.payload;
     },
+    setSchemeById: (state, action) => {
+      state.schemeById = action.payload;
+    },
   },
 });
 export const {
@@ -39,6 +43,7 @@ export const {
   setSearchSchemeByText,
   setAllAppliedSchemes,
   setSearchedQuery,
+  setSchemeById,
 } = schemeSlice.actions;
 
 export default schemeSlice.reducer;

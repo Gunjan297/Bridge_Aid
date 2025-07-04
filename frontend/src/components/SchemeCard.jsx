@@ -16,9 +16,9 @@ const SchemeCard = ({ scheme }) => {
           {/*.split("T") splits the string
           into an array */}
         </p>
-        <Button variant="outline" className="rounded-full" size="icon">
+        {/* <Button variant="outline" className="rounded-full" size="icon">
           <Bookmark />
-        </Button>
+        </Button> */}
       </div>
 
       <div className="flex items-center gap-2 my-2">
@@ -61,10 +61,11 @@ const SchemeCard = ({ scheme }) => {
         <Button
           variant="outline"
           onClick={() => navigate(`/details/${scheme?._id}`)}
+          className="bg-green-100 w-full"
         >
           Details
         </Button>
-        <Button className="bg-green-500">Save For Later</Button>
+        {/* <Button className="bg-green-500">Save For Later</Button> */}
       </div>
     </div>
   );
