@@ -123,6 +123,7 @@ function FilterCard() {
     dispatch(setSearchedQuery(Array.from(selectedOptions)));
   }, [selectedOptions]);
 
+  //to control opening,closing of drop-down menu
   const toggleSection = (section) => {
     setOpenSections((prev) => ({
       ...prev,
