@@ -5,7 +5,7 @@ import FilterCard from './FilterCard';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 import { SCHEMES_API_END_POINT } from '@/utils/constants';
-
+import { motion } from 'framer-motion'; 
 
 
 function Schemes() {
@@ -58,7 +58,14 @@ function Schemes() {
             <div className="flex-1 h-[88vh] overflow-y-auto pb-5">
               <div className="grid grid-cols-3 gap-4">
                 {filterSchemes.map((scheme) => (
-                  <SchemeCard key={scheme._id} scheme={scheme} />
+                  <motion.div
+                    initial={{ opacity: 0, x: 100 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{opacity:0, x:-100}}
+                    transition={{duration:0.3}}
+                  >
+                    <SchemeCard key={scheme?._id} scheme={scheme} />
+                  </motion.div>
                 ))}
               </div>
             </div>

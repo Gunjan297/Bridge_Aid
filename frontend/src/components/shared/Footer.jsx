@@ -8,7 +8,7 @@ function Footer() {
           <div className="mb-4 md:mb-0">
             <h2 className="text-xl font-bold">Bridge Aid</h2>
             <p className="text-sm">
-              © 2025 Bridge Aid. Made with ❤️ by Gunjan Jain.
+              © 2025 Bridge Aid.<span> Developed by Gunjan Jain.</span>
             </p>
           </div>
 

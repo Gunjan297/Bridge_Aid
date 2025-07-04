@@ -14,6 +14,7 @@ import OrganizationSetup from './components/admin/OrganizationSetup';
 import AdminSchemes from "./components/admin/AdminSchemes";
 import PostScheme from './components/admin/PostScheme';
 import Applicants from './components/admin/Applicants';
+import ProtectedRoute from './components/admin/ProtectedRoute';
 
 const appRouter = createBrowserRouter([
   {
@@ -48,27 +49,51 @@ const appRouter = createBrowserRouter([
   //Routes for admin
   {
     path: "/admin/organizations",
-    element: <Organizations />,
+    element: (
+      <ProtectedRoute>
+        <Organizations />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/admin/organizations/create",
-    element: <OrganizationCreate />,
+    element: (
+      <ProtectedRoute>
+        <OrganizationCreate />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/admin/organizations/:id",
-    element: <OrganizationSetup />,
+    element: (
+      <ProtectedRoute>
+        <OrganizationSetup />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/admin/schemes",
-    element: <AdminSchemes />,
+    element: (
+      <ProtectedRoute>
+        <AdminSchemes />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/admin/schemes/create",
-    element: <PostScheme />,
+    element: (
+      <ProtectedRoute>
+        <PostScheme />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/admin/schemes/:id/applicants",
-    element: <Applicants />,
+    element: (
+      <ProtectedRoute>
+        <Applicants />
+      </ProtectedRoute>
+    ),
   },
 ]);
 

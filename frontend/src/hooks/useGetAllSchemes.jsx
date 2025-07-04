@@ -38,3 +38,9 @@ function useGetAllSchemes() {
 }
 
 export default useGetAllSchemes
+
+// encodeURIComponent:
+// When you pass queryString as part of a URL query parameter (?keywords=...), the string might contain characters that:
+// Are not allowed in URLs (like spaces, &, ?, =, #, etc.)
+// Have special meaning in URLs (like & separates query parameters)
+// If you don’t encode such characters, the URL may break or the server might misinterpret the query.

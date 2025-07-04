@@ -88,6 +88,9 @@ export const getAllSchemes = async (req,res) => {
             success: true,
           });
         }
+        
+        // map will return an array of arrays if the callback returns an array.
+        // flatMap will flatten those nested arrays by one level into a single array.
 
         const regexQueries = keywords.flatMap((keyword) => [
           { title: { $regex: keyword, $options: "i" } },
@@ -104,13 +107,6 @@ export const getAllSchemes = async (req,res) => {
         const schemes = await Scheme.find(query).populate({
           path:"organization"
         }).sort({createdAt: -1});
-
-        // if(!schemes || schemes.length ===0){
-        //     return res.status(404).json({
-        //       message: "Jobs not found.",
-        //       success: false,
-        //     });
-        // }
         
         return res.status(200).json({
           schemes,
