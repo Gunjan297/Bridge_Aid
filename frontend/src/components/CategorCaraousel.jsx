@@ -35,7 +35,7 @@ function CategorCaraousel() {
   const navigate = useNavigate()
 
   const searchSchemeHandler = (query) => {
-      dispatch(setSearchedQuery(query));
+      dispatch(setSearchedQuery([query]));
       navigate("/browse")
     }
 

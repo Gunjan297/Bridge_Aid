@@ -8,7 +8,7 @@ const schemeSlice = createSlice({
     singleScheme: null,
     searchSchemeByText: "",
     allAppliedSchemes: [],
-    searchedQuery: "",
+    searchedQuery: [],
   },
   reducers: {
     // actions

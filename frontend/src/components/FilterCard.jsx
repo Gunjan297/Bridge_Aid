@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
-import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
+import React, { useEffect, useState } from 'react'
 import { Label } from "./ui/label";
 import { Checkbox } from './ui/checkbox';
+import { Button } from './ui/button';
+import { setSearchedQuery } from '@/redux/schemeSlice';
+import { useDispatch } from 'react-redux';
 
 const fitlerData = [
   {
@@ -101,15 +103,46 @@ const fitlerData = [
 ];
 
 function FilterCard() {
+  const dispatch = useDispatch();
 
-  const [selected, setSelected] = useState({});
+  // Use a Set to avoid duplicates
+  const [selectedOptions, setSelectedOptions] = useState(new Set());
+
+  // Toggle selection when checkbox changes
+  const handleCheckboxChange = (item) => {
+    setSelectedOptions((prev) => {
+      const newSet = new Set(prev);
+
+      if (newSet.has(item)) {
+        newSet.delete(item);
+      } else {
+        newSet.add(item);
+      }
+      return newSet;
+    });
+  };
+
+  useEffect(()=>{
+    dispatch(setSearchedQuery(Array.from(selectedOptions)))
+  },[selectedOptions])
+
+  // const applyFilters = () => {
+  //   dispatch(setSearchedQuery(Array.from(selectedOptions)));
+  // };
 
   return (
     <div className="w-full bg-white p-3 rounded-md">
-      <h1 className="font-bold text-lg">Filter Schemes</h1>
+      <div>
+        <h1 className="font-bold text-lg">Filter Schemes</h1>
+        {/* <Button
+          onClick={applyFilters}
+          className="mt-4 bg-green-600 hover:bg-green-700 text-white"
+        >
+          Apply Filters
+        </Button> */}
+      </div>
       <hr className="mt-3" />
 
-      {/* Remove this wrapper or move it inside if needed per group */}
       {fitlerData.map((data, index) => (
         <div key={index}>
           <h1 className="font-bold text-lg mt-4">{data.fitlerType}</h1>
@@ -117,7 +150,11 @@ function FilterCard() {
             const itemId = `id${index}-${idx}`;
             return (
               <div key={itemId} className="flex items-center space-x-2 my-2">
-                <Checkbox id={itemId} />
+                <Checkbox
+                  id={itemId}
+                  checked={selectedOptions.has(item)}
+                  onCheckedChange={() => handleCheckboxChange(item)}
+                />
                 <Label htmlFor={itemId}>{item}</Label>
               </div>
             );

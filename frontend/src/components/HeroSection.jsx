@@ -12,7 +12,7 @@ const HeroSection = () => {
   const [query,setQuery] = useState("")
 
   const searchSchemeHandler = () => {
-    dispatch(setSearchedQuery(query));
+    dispatch(setSearchedQuery([query]));
     navigate("/browse")
   }
   return (

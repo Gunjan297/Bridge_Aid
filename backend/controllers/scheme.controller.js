@@ -69,17 +69,37 @@ export const postScheme = async (req,res) => {
 //based on keyword chosen
 export const getAllSchemes = async (req,res) => {
     try {
-        const keyword = req.query.keyword || "";
+        const keywordsString = req.query.keywords || "";
 
-        const query = {
-          $or: [
-            { title: { $regex: keyword, $options: "i" } },
-            { description: { $regex: keyword, $options: "i" } },
-            { category: { $regex: keyword, $options: "i" } },
-            { details: { $regex: keyword, $options: "i" } },
-            { subCategory: { $regex: keyword, $options: "i" } },
-          ],
-        };
+        const keywords = keywordsString
+          .split(",")
+          .map((k) => k.trim())
+          .filter((k) => k !== "");
+
+        if (keywords.length === 0) {
+          const allSchemes = await Scheme.find({})
+            .populate({
+              path:"organization"
+            })
+            .sort({ createdAt: -1 });
+
+          return res.status(200).json({
+            schemes: allSchemes,
+            success: true,
+          });
+        }
+
+        const regexQueries = keywords.flatMap((keyword) => [
+          { title: { $regex: keyword, $options: "i" } },
+          { description: { $regex: keyword, $options: "i" } },
+          { category: { $regex: keyword, $options: "i" } },
+          { details: { $regex: keyword, $options: "i" } },
+          { subCategory: { $regex: keyword, $options: "i" } },
+          { type: { $regex: keyword, $options: "i" } },
+          { location: { $regex: keyword, $options: "i" } },
+        ]);
+        
+        const query = { $or: regexQueries };
 
         const schemes = await Scheme.find(query).populate({
           path:"organization"

@@ -7,11 +7,20 @@ import { setAllSchemes } from '@/redux/schemeSlice';
 function useGetAllSchemes() {
     const dispatch = useDispatch();
     const {searchedQuery} = useSelector(store=>store.scheme)
+
     useEffect(() => {
       const fetchAllSchemes = async () => {
         try {
+          let queryString = "";
+
+          if (searchedQuery && searchedQuery.length > 0) {
+            queryString = searchedQuery.join(",");
+          }
+
           const res = await axios.get(
-            `${SCHEMES_API_END_POINT}/get?keyword=${searchedQuery}`,
+            `${SCHEMES_API_END_POINT}/get?keywords=${encodeURIComponent(
+              queryString
+            )}`,
             {
               withCredentials: true,
             }
