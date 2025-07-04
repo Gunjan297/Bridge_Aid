@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
 import { Label } from "./ui/label";
-import { Checkbox } from './ui/checkbox';
-import { Button } from './ui/button';
-import { setSearchedQuery } from '@/redux/schemeSlice';
-import { useDispatch } from 'react-redux';
+import { Checkbox } from "./ui/checkbox";
+import { setSearchedQuery } from "@/redux/schemeSlice";
+import { useDispatch } from "react-redux";
+import { ChevronDown, ChevronUp } from "lucide-react";
 
-const fitlerData = [
+const filterData = [
   {
-    fitlerType: "Type",
+    filterType: "Type",
     array: ["Government", "Private", "NGO"],
   },
   {
-    fitlerType: "Location",
+    filterType: "Location",
     array: [
       "Andhra Pradesh",
       "Arunachal Pradesh",
@@ -52,7 +52,7 @@ const fitlerData = [
     ],
   },
   {
-    fitlerType: "Category",
+    filterType: "Category",
     array: [
       "Education & Learning",
       "Business & Entrepreneurship",
@@ -72,7 +72,7 @@ const fitlerData = [
     ],
   },
   {
-    fitlerType: "Sub-Category",
+    filterType: "Sub-Category",
     array: [
       "Women",
       "Children",
@@ -104,15 +104,12 @@ const fitlerData = [
 
 function FilterCard() {
   const dispatch = useDispatch();
-
-  // Use a Set to avoid duplicates
   const [selectedOptions, setSelectedOptions] = useState(new Set());
+  const [openSections, setOpenSections] = useState({});
 
-  // Toggle selection when checkbox changes
   const handleCheckboxChange = (item) => {
     setSelectedOptions((prev) => {
       const newSet = new Set(prev);
-
       if (newSet.has(item)) {
         newSet.delete(item);
       } else {
@@ -122,47 +119,60 @@ function FilterCard() {
     });
   };
 
-  useEffect(()=>{
-    dispatch(setSearchedQuery(Array.from(selectedOptions)))
-  },[selectedOptions])
+  useEffect(() => {
+    dispatch(setSearchedQuery(Array.from(selectedOptions)));
+  }, [selectedOptions]);
 
-  // const applyFilters = () => {
-  //   dispatch(setSearchedQuery(Array.from(selectedOptions)));
-  // };
+  const toggleSection = (section) => {
+    setOpenSections((prev) => ({
+      ...prev,
+      [section]: !prev[section],
+    }));
+  };
 
   return (
     <div className="w-full bg-white p-3 rounded-md">
-      <div>
-        <h1 className="font-bold text-lg">Filter Schemes</h1>
-        {/* <Button
-          onClick={applyFilters}
-          className="mt-4 bg-green-600 hover:bg-green-700 text-white"
-        >
-          Apply Filters
-        </Button> */}
-      </div>
+      <h1 className="font-bold text-lg">Filter Schemes</h1>
       <hr className="mt-3" />
 
-      {fitlerData.map((data, index) => (
-        <div key={index}>
-          <h1 className="font-bold text-lg mt-4">{data.fitlerType}</h1>
-          {data.array.map((item, idx) => {
-            const itemId = `id${index}-${idx}`;
-            return (
-              <div key={itemId} className="flex items-center space-x-2 my-2">
-                <Checkbox
-                  id={itemId}
-                  checked={selectedOptions.has(item)}
-                  onCheckedChange={() => handleCheckboxChange(item)}
-                />
-                <Label htmlFor={itemId}>{item}</Label>
-              </div>
-            );
-          })}
+      {filterData.map((data, index) => (
+        <div key={index} className="mt-4 border-b pb-2">
+          <button
+            onClick={() => toggleSection(data.filterType)}
+            className="w-full flex justify-between items-center text-left font-semibold text-gray-800"
+          >
+            <span>{data.filterType}</span>
+            {openSections[data.filterType] ? (
+              <ChevronUp className="h-4 w-4" />
+            ) : (
+              <ChevronDown className="h-4 w-4" />
+            )}
+          </button>
+          {openSections[data.filterType] && (
+            <div className="mt-2 max-h-60 overflow-y-auto pr-2">
+              {data.array.map((item, idx) => {
+                const itemId = `id${index}-${idx}`;
+                return (
+                  <div
+                    key={itemId}
+                    className="flex items-center space-x-2 my-2"
+                  >
+                    <Checkbox
+                      id={itemId}
+                      checked={selectedOptions.has(item)}
+                      onCheckedChange={() => handleCheckboxChange(item)}
+                    />
+                    <Label htmlFor={itemId}>{item}</Label>
+                  </div>
+                );
+              })}
+            </div>
+          )}
         </div>
       ))}
     </div>
   );
 }
 
-export default FilterCard
+export default FilterCard;
+

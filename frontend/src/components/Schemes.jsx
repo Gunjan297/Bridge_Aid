@@ -9,7 +9,7 @@ import { SCHEMES_API_END_POINT } from '@/utils/constants';
 
 
 function Schemes() {
-  //declared custom hook to get all schemes in Home.jsx
+  //declared custom (useGetAllSchemes) hook to get all schemes in Home.jsx
 
   const { allSchemes, searchedQuery } = useSelector((store) => store.scheme);
 
