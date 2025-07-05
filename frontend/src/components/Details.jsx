@@ -5,68 +5,70 @@ import { Button } from "./ui/button";
 import { Link as ExternalLink, FileText, CheckCircle } from "lucide-react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import { APPLICATION_API_END_POINT, SCHEMES_API_END_POINT } from "@/utils/constants";
+import {
+  APPLICATION_API_END_POINT,
+  SCHEMES_API_END_POINT,
+} from "@/utils/constants";
 import { setSingleScheme } from "@/redux/schemeSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "sonner";
 
 function Details() {
-    const params = useParams()
-    const schemeId = params.id;
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
+  const params = useParams();
+  const schemeId = params.id;
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
+  const { singleScheme } = useSelector((store) => store.scheme);
+  const { user } = useSelector((store) => store.auth);
 
-    const { singleScheme } = useSelector(store=> store.scheme)
-    const { user } = useSelector((store) => store.auth);
+  const [isApplied, setIsApplied] = useState(false);
 
-     const [isApplied, setIsApplied] = useState(false);
-    
-    const applyJobHandler = async ()=>{
+  const applyJobHandler = async () => {
+    try {
+      const res = await axios.get(
+        `${APPLICATION_API_END_POINT}/apply/${schemeId}`,
+        { withCredentials: true }
+      );
+
+      if (res.data.success) {
+        setIsApplied(true);
+        dispatch(setSingleScheme(res.data.scheme));
+        toast.success(res.data.message);
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(error.response.data.message);
+    }
+  };
+
+  useEffect(() => {
+    const fetchSingleScheme = async () => {
       try {
+        setIsApplied(false); // reset while loading
         const res = await axios.get(
-          `${APPLICATION_API_END_POINT}/apply/${schemeId}`,
-          { withCredentials: true }
+          `${SCHEMES_API_END_POINT}/get/${schemeId}`,
+          {
+            withCredentials: true,
+          }
         );
-        
-        if(res.data.success){
-          setIsApplied(true);
+        if (res.data.success) {
           dispatch(setSingleScheme(res.data.scheme));
-          toast.success(res.data.message)
+
+          setIsApplied(
+            user
+              ? res.data.scheme.applications.some(
+                  (application) => application.applicant === user?._id
+                )
+              : false
+          );
         }
       } catch (error) {
         console.log(error);
-        toast.error(error.response.data.message);
       }
-    }
-
-    useEffect(() => {
-      const fetchSingleScheme = async () => {
-        try {
-          setIsApplied(false); // reset while loading
-          const res = await axios.get(
-            `${SCHEMES_API_END_POINT}/get/${schemeId}`,
-            {
-              withCredentials: true,
-            }
-          );
-          if (res.data.success) {
-            dispatch(setSingleScheme(res.data.scheme));
-
-            setIsApplied(
-              user
-                ? res.data.scheme.applications.some(
-                    (application) => application.applicant === user?._id
-                  )
-                : false
-            );
-          }
-        } catch (error) {
-          console.log(error);
-        }
-      };
-      fetchSingleScheme();
-    }, [schemeId, dispatch, user?._id]);
+    };
+    fetchSingleScheme();
+  }, [schemeId, dispatch, user?._id]);
 
   return (
     <div className="bg-gray-50 min-h-screen">
@@ -196,7 +198,6 @@ function Details() {
       </div>
     </div>
   );
-};
+}
 
-
-export default Details
+export default Details;

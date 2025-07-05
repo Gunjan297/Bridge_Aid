@@ -7,6 +7,6 @@ const router = express.Router();
 router.route("/post").post(isAuthenticated, postScheme);
 router.route("/get").get(getAllSchemes);
 router.route("/getadminschemes").get(isAuthenticated, getAdminSchemes);
-router.route("/get/:id").get(isAuthenticated, getSchemeById);
+router.route("/get/:id").get( getSchemeById);
 router.route("/update/:id").put(isAuthenticated, updateScheme);
 export default router;

@@ -59,12 +59,13 @@ function Schemes() {
               <div className="grid grid-cols-3 gap-4">
                 {filterSchemes.map((scheme) => (
                   <motion.div
+                    key={scheme?._id}
                     initial={{ opacity: 0, x: 100 }}
                     animate={{ opacity: 1, x: 0 }}
-                    exit={{opacity:0, x:-100}}
-                    transition={{duration:0.3}}
+                    exit={{ opacity: 0, x: -100 }}
+                    transition={{ duration: 0.3 }}
                   >
-                    <SchemeCard key={scheme?._id} scheme={scheme} />
+                    <SchemeCard scheme={scheme} />
                   </motion.div>
                 ))}
               </div>
