@@ -3,6 +3,7 @@ Developed a comprehensive web platform that bridges the gap between citizens see
 
 # Problem Addressed:
 Individuals struggle to discover and apply for welfare schemes due to fragmented information across websites, newspapers, and social media, often missing deadlines or facing complex application processes.
+
 NGOs and corporates launching CSR initiatives find it challenging to effectively reach and engage their target beneficiaries.
 
 # Key Features:
