@@ -15,9 +15,13 @@ NGOs and corporates launching CSR initiatives find it challenging to effectively
 
 # Tech Stack
 Frontend: React, Redux Toolkit, Vite, Tailwind CSS, ShadCN UI
+
 Backend: Node.js, Express.js
+
 Database: MongoDB (Mongoose ODM)
+
 Authentication: JSON Web Tokens (JWT)
+
 Deployment: Render (website link: https://bridge-aid-frontend.onrender.com/)
 
 # Getting Started
