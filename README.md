@@ -7,6 +7,7 @@ Individuals struggle to discover and apply for welfare schemes due to fragmented
 NGOs and corporates launching CSR initiatives find it challenging to effectively reach and engage their target beneficiaries.
 
 # Key Features:
+
 1) **Personalized Scheme Discovery**: Users can search schemes by keywords, categories (e.g., education, health, pension), sub-categories, and apply advanced filters (location, scheme type).
 2) **One-Click Application**: Applicants can view eligibility, documentation, deadlines, and directly apply for schemes through the portal, uploading all required documents in their profiles.
 3 **Real-Time Status Tracking**: Users can track applications and receive instant updates on acceptance or rejection.
@@ -31,20 +32,18 @@ Prerequisites
 1) Node.js (v16+)
 2) MongoDB instance (local or Atlas)
 3)Clone the Repository
-bash
 ```
 git clone https://github.com/your-username/bridge-aid.git
 cd bridge-aid
 ```
 4)Install Dependencies
+
 Frontend
-bash
 ```
 cd frontend
 npm install
 ```
 Backend
-bash
 ```
 cd ../backend
 npm install
@@ -52,11 +51,15 @@ npm install
 ```
 5) Configure Environment Variables
 Create a .env file inside the backend folder:
-```
+
 PORT=8000
 MONGODB_URI=your-mongodb-connection-string
 JWT_SECRET=your-secret-key
-```
+(For cloudinary setup)
+CLOUD_NAME=your-cloud-name-string
+API_KEY = your-clodinar-API-key
+API_SECRET = your-cloudinary-API-secret-string
+
 6) Run the Application
 Backend
 ```
