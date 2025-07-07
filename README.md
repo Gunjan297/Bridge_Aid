@@ -31,6 +31,7 @@ Follow these instructions to set up BridgeAid locally.
 Prerequisites
 1) Node.js (v16+)
 2) MongoDB instance (local or Atlas)
+
 3)Clone the Repository
 ```
 git clone https://github.com/your-username/bridge-aid.git
@@ -53,11 +54,17 @@ npm install
 Create a .env file inside the backend folder:
 
 PORT=8000
+
 MONGODB_URI=your-mongodb-connection-string
+
 JWT_SECRET=your-secret-key
+
 (For cloudinary setup)
+
 CLOUD_NAME=your-cloud-name-string
+
 API_KEY = your-clodinar-API-key
+
 API_SECRET = your-cloudinary-API-secret-string
 
 6) Run the Application
@@ -85,19 +92,24 @@ You can deploy the backend and frontend on Render
 
 # Contributing
 Contributions are welcome! Please follow these steps:
+
 1)Fork the repository.
+
 2)Create a feature branch:
-bash
 ```
 git checkout -b feature/your-feature-name
 Commit your changes.
 ```
+
 3)Push to your fork.
+
 4)Open a pull request.
 
 # Contact
 For any questions or suggestions:
+
 Project Link: https://bridge-aid-frontend.onrender.com/
+
 Email: mgpsgunjan6166@gmail.com
 
 <img width="953" alt="HomePage" src="https://github.com/user-attachments/assets/8782b7d8-91d8-4f36-866f-d1ca3ab387b5" />
