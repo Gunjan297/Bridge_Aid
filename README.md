@@ -34,7 +34,7 @@ Prerequisites
 
 3)Clone the Repository
 ```
-git clone https://github.com/your-username/bridge-aid.git
+git clone https://github.com/Gunjan297/Bridge_Aid.git
 cd bridge-aid
 ```
 4)Install Dependencies
