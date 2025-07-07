@@ -35,7 +35,7 @@ Prerequisites
 3)Clone the Repository
 ```
 git clone https://github.com/Gunjan297/Bridge_Aid.git
-cd bridge-aid
+cd Bridge_Aid
 ```
 4)Install Dependencies
 
@@ -84,7 +84,7 @@ On signup/login, users receive a token.
 Protected routes validate this token via middleware.
 
 # Testing
-Backend APIs can be tested using Postman or Thunder Client.
+Backend APIs can be tested using Postman.
 Frontend tested manually on Chrome, Firefox, and Edge.
 
 # Deployment
@@ -98,19 +98,19 @@ Contributions are welcome! Please follow these steps:
 2)Create a feature branch:
 ```
 git checkout -b feature/your-feature-name
-Commit your changes.
 ```
 
-3)Push to your fork.
+3)Commit your changes.
 
-4)Open a pull request.
+4)Push to your fork.
+
+5)Open a pull request.
 
 # Contact
-For any questions or suggestions:
+For any questions or suggestions: 
+Email: mgpsgunjan6166@gmail.com
 
 Project Link: https://bridge-aid-frontend.onrender.com/
-
-Email: mgpsgunjan6166@gmail.com
 
 <img width="953" alt="HomePage" src="https://github.com/user-attachments/assets/8782b7d8-91d8-4f36-866f-d1ca3ab387b5" />
 <img width="960" alt="HomePage2" src="https://github.com/user-attachments/assets/96c2ca9a-9815-4892-adaa-017e2cb47b8a" />
