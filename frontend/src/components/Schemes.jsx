@@ -6,11 +6,11 @@ import { useSelector } from 'react-redux';
 import axios from 'axios';
 import { SCHEMES_API_END_POINT } from '@/utils/constants';
 import { motion } from 'framer-motion'; 
-
+import useGetAllSchemes from '@/hooks/useGetAllSchemes';
 
 function Schemes() {
-  //declared custom (useGetAllSchemes) hook to get all schemes in Home.jsx
-
+  //also declared custom (useGetAllSchemes) hook to get all schemes in Home.jsx
+  useGetAllSchemes();
   const { allSchemes, searchedQuery } = useSelector((store) => store.scheme);
 
   const [filterSchemes, setFilterSchemes] = useState(allSchemes);
