@@ -63,7 +63,7 @@ const SchemeCard = ({ scheme }) => {
           onClick={() => navigate(`/details/${scheme?._id}`)}
           className="bg-green-100 w-full"
         >
-          Details
+          Click here to see the details
         </Button>
         {/* <Button className="bg-green-500">Save For Later</Button> */}
       </div>
