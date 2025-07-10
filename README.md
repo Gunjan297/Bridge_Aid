@@ -6,6 +6,7 @@ Developed a comprehensive web platform that bridges the gap between citizens see
 
 # Problem Addressed:
 Individuals struggle to discover and apply for welfare schemes due to fragmented information across websites, newspapers, and social media, often missing deadlines or facing complex application processes.
+<img width="955" alt="SchemesPage" src="https://github.com/user-attachments/assets/3a787aea-774c-4f74-aa00-4e44dc2a8e2c" />
 
 NGOs and corporates launching CSR initiatives find it challenging to effectively reach and engage their target beneficiaries.
 
@@ -115,7 +116,6 @@ Email: mgpsgunjan6166@gmail.com
 
 Project Link: https://bridge-aid-frontend.onrender.com/
 
-<img width="955" alt="SchemesPage" src="https://github.com/user-attachments/assets/3a787aea-774c-4f74-aa00-4e44dc2a8e2c" />
 <img width="924" alt="SchemeDetails" src="https://github.com/user-attachments/assets/31193ff8-bc5d-4789-a572-31cf66407637" />
 <img width="929" alt="Applicant Profile" src="https://github.com/user-attachments/assets/dcf7a3dc-c02a-41d6-b26e-9a1bbe8b2d40" />
 <img width="956" alt="ApplicantProfile" src="https://github.com/user-attachments/assets/768eaaef-d178-42ac-b011-1e1e487908b4" />
