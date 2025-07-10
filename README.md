@@ -1,6 +1,9 @@
 # BridgeAid – Unified Welfare Scheme Discovery & Application Portal
 Developed a comprehensive web platform that bridges the gap between citizens seeking welfare support and organizations offering social initiatives, CSR programs, and government schemes.
 
+<img width="953" alt="HomePage" src="https://github.com/user-attachments/assets/8782b7d8-91d8-4f36-866f-d1ca3ab387b5" />
+<img width="960" alt="HomePage2" src="https://github.com/user-attachments/assets/96c2ca9a-9815-4892-adaa-017e2cb47b8a" />
+
 # Problem Addressed:
 Individuals struggle to discover and apply for welfare schemes due to fragmented information across websites, newspapers, and social media, often missing deadlines or facing complex application processes.
 
@@ -52,7 +55,7 @@ npm install
 ```
 5) Configure Environment Variables
 Create a .env file inside the backend folder:
-
+```
 PORT=8000
 
 MONGODB_URI=your-mongodb-connection-string
@@ -66,7 +69,7 @@ CLOUD_NAME=your-cloud-name-string
 API_KEY = your-clodinar-API-key
 
 API_SECRET = your-cloudinary-API-secret-string
-
+```
 6) Run the Application
 Backend
 ```
@@ -112,8 +115,6 @@ Email: mgpsgunjan6166@gmail.com
 
 Project Link: https://bridge-aid-frontend.onrender.com/
 
-<img width="953" alt="HomePage" src="https://github.com/user-attachments/assets/8782b7d8-91d8-4f36-866f-d1ca3ab387b5" />
-<img width="960" alt="HomePage2" src="https://github.com/user-attachments/assets/96c2ca9a-9815-4892-adaa-017e2cb47b8a" />
 <img width="955" alt="SchemesPage" src="https://github.com/user-attachments/assets/3a787aea-774c-4f74-aa00-4e44dc2a8e2c" />
 <img width="924" alt="SchemeDetails" src="https://github.com/user-attachments/assets/31193ff8-bc5d-4789-a572-31cf66407637" />
 <img width="929" alt="Applicant Profile" src="https://github.com/user-attachments/assets/dcf7a3dc-c02a-41d6-b26e-9a1bbe8b2d40" />
