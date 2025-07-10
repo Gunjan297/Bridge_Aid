@@ -1,8 +1,10 @@
 import React from 'react'
 import LatestSchemeCard from './LatestSchemeCard';
 import { useSelector } from 'react-redux';
+import useGetAllSchemes from '@/hooks/useGetAllSchemes';
 
 function LatestScheme() {
+  useGetAllSchemes();
   const {allSchemes} = useSelector(store=> store.scheme)
 
   return (
