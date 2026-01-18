@@ -1,5 +1,5 @@
 # BridgeAid – Unified Welfare Scheme Discovery & Application Portal
-Developed a comprehensive web platform that bridges the gap between citizens seeking welfare support and organizations offering social initiatives, CSR programs, and government schemes.
+Developed a comprehensive web platform that bridges the gap between citizens seeking welfare support and organizations, NGOs offering social initiatives and CSR programs.
 
 <img width="953" alt="HomePage" src="https://github.com/user-attachments/assets/8782b7d8-91d8-4f36-866f-d1ca3ab387b5" />
 <img width="960" alt="HomePage2" src="https://github.com/user-attachments/assets/96c2ca9a-9815-4892-adaa-017e2cb47b8a" />
